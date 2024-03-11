@@ -1,7 +1,8 @@
 
 function WatchHistory() {
     return (
-        <div>WatchHistory</div>
+        <>
+        </>
     )
 }
 

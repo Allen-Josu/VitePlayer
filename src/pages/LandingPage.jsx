@@ -2,6 +2,8 @@ import { Col, Row } from "react-bootstrap"
 import Card from 'react-bootstrap/Card';
 
 function LandingPage() {
+
+    
     return (
         <>
             <Row className="d-flex justify-content-center align-items-center mt-5 mb-5" >
@@ -56,6 +58,27 @@ function LandingPage() {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
+                    </div>
+                </div>
+            </div>
+
+            <div className="w-100 d-flex justify-content-center align-items-center mt-5">
+                <div className="row border border-light w-75">
+                    <div className="col-md-5 ps-4 d-flex flex-column justify-content-center">
+                        <h3 className="text-warning mb-5">Simple Fast and Powerful</h3>
+                        <p>
+                            <span className="text-warning fs-5">Play Everything :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eos, nobis minima architecto culpa quae consequuntur assumenda, aspernatur, voluptatem neque quasi asperiores similique dolore aut ex accusamus deserunt! Commodi, accusantium.
+                        </p>
+                        <p>
+                            <span className="text-warning fs-5">Play Everything :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eos, nobis minima architecto culpa quae consequuntur assumenda, aspernatur, voluptatem neque quasi asperiores similique dolore aut ex accusamus deserunt! Commodi, accusantium.
+                        </p>
+                        <p>
+                            <span className="text-warning fs-5">Play Everything :</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eos, nobis minima architecto culpa quae consequuntur assumenda, aspernatur, voluptatem neque quasi asperiores similique dolore aut ex accusamus deserunt! Commodi, accusantium.
+                        </p>
+                    </div>
+                    <div className="col-md-1"></div>
+                    <div className="col-md-6 p-5">
+                        <iframe width="100%" height="500" src="https://www.youtube.com/embed/rtd_VveAEaI?si=4bUnrSlUipzSQ8VX" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
