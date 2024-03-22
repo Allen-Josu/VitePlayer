@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { uploadVideoAPI } from '../services/allAPI';
 
 function Add() {
   const [show, setShow] = useState(false);
@@ -18,14 +19,37 @@ function Add() {
     const text = e.target.value
     if (text.endsWith("shared")) {
       const link = `https://www.youtube.com/embed/${text.slice(-26, -15)}`
-      setVideo({...video, url: link})
+      setVideo({ ...video, url: link })
     }
     else {
       const link = `https://www.youtube.com/embed/${text.slice(-11)}`
-      setVideo({...video, url: link})
+      setVideo({ ...video, url: link })
     }
   }
-  console.log(video);
+
+  const handleUpload = async () => {
+    const { id, caption, url, image_url } = video
+    console.log(id, image_url, caption, url);
+    if (!id || !caption || !url || !image_url) {
+      alert("Please fill the form completly")
+    }
+    else {
+      const response = await uploadVideoAPI(video)
+      if (response.status >= 200 && response.status < 300) {
+        alert("Video Uploaded Successfully")
+        setVideo({
+          id: "",
+          url: "",
+          image_url: "",
+          caption: ""
+        })
+        handleClose()
+      }
+      else {
+        console.log(response);
+      }
+    }
+  }
 
   return (
     <>
@@ -63,7 +87,7 @@ function Add() {
         </Modal.Body>
         <Modal.Footer>
           <button className="btn btn-danger" onClick={handleClose}>Cancel</button>
-          <button className="btn btn-warning">Upload</button>
+          <button className="btn btn-warning" onClick={handleUpload}>Upload</button>
         </Modal.Footer>
       </Modal>
 
