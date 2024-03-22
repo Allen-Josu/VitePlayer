@@ -4,9 +4,29 @@ import Form from 'react-bootstrap/Form';
 
 function Add() {
   const [show, setShow] = useState(false);
+  const [video, setVideo] = useState({
+    id: "",
+    caption: "",
+    url: "",
+    image_url: ""
+  })
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const getEmbedLink = (e) => {
+    const text = e.target.value
+    if (text.endsWith("shared")) {
+      const link = `https://www.youtube.com/embed/${text.slice(-26, -15)}`
+      setVideo({...video, url: link})
+    }
+    else {
+      const link = `https://www.youtube.com/embed/${text.slice(-11)}`
+      setVideo({...video, url: link})
+    }
+  }
+  console.log(video);
+
   return (
     <>
       <div className="d-flex ">
@@ -24,19 +44,19 @@ function Add() {
           <p>Please fill the following details</p>
           <Form className='border rounded p-3 border-secondary'>
             <Form.Group className='mb-3'>
-              <Form.Control type="text" placeholder="Enter the vedio ID" />
+              <Form.Control type="text" placeholder="Enter the vedio ID" onChange={(e) => setVideo({ ...video, id: e.target.value })} />
             </Form.Group>
 
             <Form.Group className='mb-3'>
-              <Form.Control type="text" placeholder="Enter the Vedio Caption" />
+              <Form.Control type="text" placeholder="Enter the Vedio Caption" onChange={(e) => setVideo({ ...video, caption: e.target.value })} />
             </Form.Group>
 
             <Form.Group className='mb-3'>
-              <Form.Control type="text" placeholder="Enter the Image URL" />
+              <Form.Control type="text" placeholder="Enter the Image URL" onChange={(e) => setVideo({ ...video, image_url: e.target.value })} />
             </Form.Group>
 
             <Form.Group className='mb-3'>
-              <Form.Control type="text" placeholder="Enter the Youtube Link" />
+              <Form.Control type="text" placeholder="Enter the Youtube Link" onChange={(e) => getEmbedLink(e)} />
             </Form.Group>
 
           </Form>
